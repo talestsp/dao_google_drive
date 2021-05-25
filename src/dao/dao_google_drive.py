@@ -14,9 +14,9 @@ drive = GoogleDrive(gauth)
 DATA_DIR = "data/"
 TEMP_DATA_DIR = DATA_DIR + "temp/"
 
-def load_data(dataset_shareable_link, sep):
+def load_data(dataset_shareable_link, sep, dtype=None):
     google_drive_file_id = get_google_drive_file_id_from_shareable_link(dataset_shareable_link)
-    data = load_csv_from_google_drive_file_id(google_drive_file_id, sep)
+    data = load_csv_from_google_drive_file_id(google_drive_file_id, sep, dtype)
     return data
 
 def get_google_drive_file_id_from_shareable_link(shareable_link):
