@@ -30,14 +30,14 @@ def create_dir(dirpath):
     if not os.path.exists(dirpath):
         os.mkdir(dirpath)
 
-def load_csv_from_google_drive_file_id(google_drive_file_id, sep):
+def load_csv_from_google_drive_file_id(google_drive_file_id, sep, dtype):
     csv_filepath = TEMP_DATA_DIR + '_temp.csv'
     create_dir(DATA_DIR)
     create_dir(TEMP_DATA_DIR)
 
     downloaded = drive.CreateFile({'id' : google_drive_file_id})
     downloaded.GetContentFile(csv_filepath)
-    csv_file = pd.read_csv(csv_filepath, sep=sep)
+    csv_file = pd.read_csv(csv_filepath, sep=sep, dtype=dtype)
     remove_file(csv_filepath)
     return csv_file
 
